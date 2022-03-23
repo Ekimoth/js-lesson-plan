@@ -52,6 +52,7 @@ const Headers = styled.div`
       margin: 0;
       font-size: ${6.5 - n}em;
       text-shadow: 5px 5px 8px #000;
+      text-align: center;
     }
   `)}
 `;

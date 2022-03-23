@@ -1,7 +1,4 @@
-// types
-import { SlideObject } from 'hooks/useSlides';
-
-const slides: SlideObject[] = [
+const strings = [
   {
     headers: ['Data Types', 'Primitive Data Types', 'String'],
   },
@@ -21,7 +18,7 @@ const slides: SlideObject[] = [
         content: 'var myName = `Vladimir`;',
       },
     ],
-  }
+  },
 ];
 
-export default slides;
+export default strings;
