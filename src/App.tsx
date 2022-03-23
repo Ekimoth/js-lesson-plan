@@ -1,11 +1,14 @@
+import { useCallback, useRef } from 'react';
 import styled from 'styled-components';
+import { IoIosArrowBack } from 'react-icons/io';
+import { IoIosArrowForward } from 'react-icons/io';
 
 // components
 import Slide, { RefProps } from 'components/Slide/Slide';
+import KeyboardListeners from 'components/KeyboardListeners';
 
 // payload
 import slides from 'payload';
-import { useCallback, useRef } from 'react';
 
 interface ButtonProps {
   float: 'left' | 'right';
@@ -16,6 +19,25 @@ const Button = styled.button<ButtonProps>`
     position: fixed;
     ${float}: 0;
     top: 50%;
+    font-size: 2em;
+    background-color: black;
+    border: none;
+    color: white;
+    display: flex;
+    padding: 0.3em;
+    cursor: pointer;
+
+    :active {
+      background-color: #181717;
+    }
+
+    opacity: 0;
+
+    :hover {
+      opacity: 1;
+    }
+
+    transition: opacity 0.3s;
   `}
 `;
 
@@ -61,16 +83,15 @@ function App() {
   }, []);
 
   return (
-    <>
-      <Div>
-        <BlurredBackground />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-          <Slide ref={slideRef} slides={slides} />
-        </div>
-      </Div>
-      <Button float="left" onClick={onPrev}>{'<'}</Button>
-      <Button float="right" onClick={onNext}>{'>'}</Button>
-    </>
+    <Div>
+      <BlurredBackground />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+        <Slide ref={slideRef} slides={slides} />
+      </div>
+      <Button float="left" onClick={onPrev}><IoIosArrowBack /></Button>
+      <Button float="right" onClick={onNext}><IoIosArrowForward /></Button>
+      <KeyboardListeners onLeft={onPrev} onRight={onNext} />
+    </Div>
   )
 };
 
