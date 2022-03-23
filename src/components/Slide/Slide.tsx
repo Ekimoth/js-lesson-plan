@@ -1,30 +1,23 @@
-import { useImperativeHandle, useRef, forwardRef, ElementType } from 'react';
+import { forwardRef } from 'react';
 import styled from 'styled-components';
 
 // components
 import InnerSlide, { InnerSlideOrientation } from 'components/InnerSlide';
 
 // hooks
-import useSlide, { SlideObject } from 'components/Slide/useSlide';
+import useSlides, { SlideObject } from 'hooks/useSlides';
 
 interface ContainerProps {
   backgroundColor?: string;
 }
 
-const Container = styled.div<ContainerProps>`
+const Content = styled.div<ContainerProps>`
   ${({ backgroundColor }) => `
     background-color: ${backgroundColor || 'black'};
     position: relative;
-    width: 100%;
-    height: 100%;
     padding: 2em;
+    height: 100%;
   `}
-`;
-
-const Headers = styled.div`
-  h1, h2, h3, h4, h5, h6 {
-    text-align: center;
-  }
 `;
 
 export interface RefProps {
@@ -38,35 +31,12 @@ interface Props {
 }
 
 const Slide = forwardRef<RefProps, Props>(({ backgroundColor, slides }, ref) => {
-  const [{ currentSlide }, { gotoPrev, gotoNext }] = useSlide(slides);
-
-  const childRef = useRef<RefProps>(null);
-
-  useImperativeHandle(ref, () => ({
-    gotoPrev: () => {
-      const { current: child } = childRef;
-
-      if (child?.gotoPrev()) {
-        return true;
-      }
-
-      return gotoPrev();
-    },
-    gotoNext: () => {
-      const { current: child } = childRef;
-
-      if (child?.gotoNext()) {
-        return true;
-      }
-
-      return gotoNext();
-    },
-  }), [gotoPrev, gotoNext]);
+  const { currentSlide, childRef } = useSlides(slides, ref);
 
   return (
-    <Container backgroundColor={backgroundColor}>
-      <InnerSlide ref={childRef} slide={currentSlide} orientation={InnerSlideOrientation.COLUMNS} key={currentSlide.backgroundColor} />
-    </Container>
+    <Content className="slide" backgroundColor={backgroundColor}>
+      <InnerSlide key={currentSlide.backgroundColor} ref={childRef} slide={currentSlide} orientation={InnerSlideOrientation.ROW} fullScreen />
+    </Content>
   );
 });
 

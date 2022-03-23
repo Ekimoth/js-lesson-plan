@@ -1,19 +1,9 @@
-import { useCallback, useMemo, useState, useRef } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
-// export interface SlideObject {
-//   info?: string;
-//   headers?: string[];
-//   slides?: SlideObject[];
-//   content?: string;
-//   [key: string]: any;
-// }
+// types
+import { SlideObject } from '../types';
 
-export interface SlideObject {
-  backgroundColor: string;
-  innerSlides?: SlideObject[];
-}
-
-const useInnerSlide = (slides: SlideObject[] = []) => {
+const useSlideSwitch = (slides: SlideObject[]) => {
   const [index, setIndex] = useState(0);
 
   const [hasPrev, hasNext] = useMemo(() => [index > 0, index < slides.length - 1], [index]);
@@ -43,4 +33,4 @@ const useInnerSlide = (slides: SlideObject[] = []) => {
   return useMemo(() => [{ currentSlide, slideList }, { gotoNext, gotoPrev }] as const, [currentSlide, slideList, gotoNext, gotoPrev]);
 };
 
-export default useInnerSlide;
+export default useSlideSwitch;

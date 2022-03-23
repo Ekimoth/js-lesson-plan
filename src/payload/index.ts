@@ -1,5 +1,5 @@
 // types
-import { SlideObject } from 'components/Slide/useSlide';
+import { SlideObject } from 'hooks/useSlides';
 
 const slides: SlideObject[] = [
   {
@@ -10,9 +10,31 @@ const slides: SlideObject[] = [
       },
       {
         backgroundColor: 'green',
+        innerSlides: [
+          {
+            backgroundColor: 'orange',
+          },
+          {
+            backgroundColor: 'lightgray',
+            innerSlides: [
+              {
+                backgroundColor: 'darkgray',
+              },
+              {
+                backgroundColor: 'white',
+              },
+            ]
+          },
+          {
+            backgroundColor: 'skyblue',
+          },
+        ],
       },
       {
         backgroundColor: 'blue',
+      },
+      {
+        backgroundColor: 'brown',
       },
     ],
   },
