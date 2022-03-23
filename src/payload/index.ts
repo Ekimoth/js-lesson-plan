@@ -6,18 +6,18 @@ const slides: SlideObject[] = [
     headers: ['Data Types', 'Primitive Data Types', 'String'],
   },
   {
-    headers: ['Declaring and assigning a string variable'],
+    headers: [,,'Declaring and assigning a string variable'],
     innerSlides: [
       {
-        headers: ['Single quotes: \'\''],
+        headers: [,'Single quotes: \'\''],
         content: `var myName = 'Vladimir';`,
       },
       {
-        headers: [,,'Double quotes: ""'],
+        headers: [,'Double quotes: ""'],
         content: `var myName = "Vladimir";`,
       },
       {
-        headers: [,,'Template literal: ``'],
+        headers: [,'Template literal: ``'],
         content: 'var myName = `Vladimir`;',
       },
     ],

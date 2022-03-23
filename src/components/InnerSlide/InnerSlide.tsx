@@ -126,7 +126,7 @@ const InnerSlide = forwardRef<RefProps, Props>((
                 return null;
               }
 
-              const Tag = `h${startHeadingFrom}` as ElementType;
+              const Tag = `h${startHeadingFrom + i}` as ElementType;
               return <Tag key={i}>{header}</Tag>;
             })}
           </Headers>
@@ -142,7 +142,7 @@ const InnerSlide = forwardRef<RefProps, Props>((
                     key={i}
                     slide={innerSlide}
                     orientation={invertOrientation(orientation)}
-                    startHeadingFrom={startHeadingFrom + 1}
+                    startHeadingFrom={startHeadingFrom + 2}
                     {...(innerSlide === currentSlide ? { ref: childRef } : {})}
                   />
                 ))
