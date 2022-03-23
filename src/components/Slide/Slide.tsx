@@ -7,17 +7,9 @@ import InnerSlide, { InnerSlideOrientation } from 'components/InnerSlide';
 // hooks
 import useSlides, { SlideObject } from 'hooks/useSlides';
 
-interface ContainerProps {
-  backgroundColor?: string;
-}
-
-const Content = styled.div<ContainerProps>`
-  ${({ backgroundColor }) => `
-    background-color: ${backgroundColor || 'black'};
-    position: relative;
-    padding: 2em;
-    height: 100%;
-  `}
+const Content = styled.div`
+  position: relative;
+  height: 100%;
 `;
 
 export interface RefProps {
@@ -26,16 +18,22 @@ export interface RefProps {
 }
 
 interface Props {
-  backgroundColor?: string;
   slides: SlideObject[];
 }
 
-const Slide = forwardRef<RefProps, Props>(({ backgroundColor, slides }, ref) => {
-  const { currentSlide, childRef } = useSlides(slides, ref);
+const Slide = forwardRef<RefProps, Props>(({ slides }, ref) => {
+  const { currentSlide, childRef, key } = useSlides(slides, ref);
 
   return (
-    <Content className="slide" backgroundColor={backgroundColor}>
-      <InnerSlide key={currentSlide.backgroundColor} ref={childRef} slide={currentSlide} orientation={InnerSlideOrientation.ROW} fullScreen />
+    <Content className="slide">
+      <InnerSlide
+        key={key}
+        ref={childRef}
+        slide={currentSlide}
+        orientation={InnerSlideOrientation.ROW}
+        fullScreen
+        startHeadingFrom={1}
+      />
     </Content>
   );
 });

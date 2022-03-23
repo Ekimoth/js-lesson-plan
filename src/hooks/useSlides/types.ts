@@ -1,4 +1,4 @@
 export interface SlideObject {
-  backgroundColor: string;
+  headers?: string[];
   innerSlides?: SlideObject[];
 }

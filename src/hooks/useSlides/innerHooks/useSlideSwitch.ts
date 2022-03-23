@@ -30,7 +30,10 @@ const useSlideSwitch = (slides: SlideObject[]) => {
     return false;
   }, [hasPrev]);
 
-  return useMemo(() => [{ currentSlide, slideList }, { gotoNext, gotoPrev }] as const, [currentSlide, slideList, gotoNext, gotoPrev]);
+  return useMemo(() => 
+    [{ currentSlide, slideList, key: index }, { gotoNext, gotoPrev }] as const,
+    [currentSlide, slideList, index, gotoNext, gotoPrev]
+  );
 };
 
 export default useSlideSwitch;

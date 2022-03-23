@@ -23,6 +23,18 @@ const Div = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+`;
+
+const BlurredBackground = styled.div`
+  background-image: url('/src/img/schemytrio.jpg');
+  background-color-alpha: 0.5;
+  filter: blur(12px);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 `;
 
 function App() {
@@ -51,7 +63,10 @@ function App() {
   return (
     <>
       <Div>
-        <Slide ref={slideRef} slides={slides} />
+        <BlurredBackground />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+          <Slide ref={slideRef} slides={slides} />
+        </div>
       </Div>
       <Button float="left" onClick={onPrev}>{'<'}</Button>
       <Button float="right" onClick={onNext}>{'>'}</Button>

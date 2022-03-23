@@ -12,7 +12,7 @@ export interface RefProps {
 }
 
 const useSlides = (slides: SlideObject[], selfRef: ForwardedRef<RefProps>) => {
-  const [{ currentSlide, slideList }, { gotoPrev, gotoNext }] = useSlide(slides);
+  const [{ currentSlide, slideList, key }, { gotoPrev, gotoNext }] = useSlide(slides);
 
   const childRef = useRef<RefProps>(null);
 
@@ -37,7 +37,7 @@ const useSlides = (slides: SlideObject[], selfRef: ForwardedRef<RefProps>) => {
     },
   }), [gotoPrev, gotoNext]);
 
-  return useMemo(() => ({ currentSlide, slideList, childRef }), [currentSlide, slideList, childRef]);
+  return useMemo(() => ({ currentSlide, slideList, childRef, key }), [currentSlide, slideList, key, childRef]);
 };
 
 export default useSlides;

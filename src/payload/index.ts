@@ -3,50 +3,22 @@ import { SlideObject } from 'hooks/useSlides';
 
 const slides: SlideObject[] = [
   {
-    backgroundColor: 'red',
+    headers: ['Data Types', 'Primitive Data Types', 'String'],
+  },
+  {
+    headers: ['Declaring and assigning a string variable'],
     innerSlides: [
       {
-        backgroundColor: 'yellow',
+        headers: ['String with single quotes'],
       },
       {
-        backgroundColor: 'green',
-        innerSlides: [
-          {
-            backgroundColor: 'orange',
-          },
-          {
-            backgroundColor: 'lightgray',
-            innerSlides: [
-              {
-                backgroundColor: 'darkgray',
-              },
-              {
-                backgroundColor: 'white',
-              },
-            ]
-          },
-          {
-            backgroundColor: 'skyblue',
-          },
-        ],
+        headers: ['String with double quotes'],
       },
       {
-        backgroundColor: 'blue',
-      },
-      {
-        backgroundColor: 'brown',
+        headers: ['String with template literal'],
       },
     ],
-  },
-  {
-    backgroundColor: 'yellow',
-  },
-  {
-    backgroundColor: 'green',
-  },
-  {
-    backgroundColor: 'blue',
-  },
+  }
 ];
 
 // const slides: SlideObject[] = [
