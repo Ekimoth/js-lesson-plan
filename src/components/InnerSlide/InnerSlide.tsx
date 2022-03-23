@@ -1,5 +1,9 @@
 import { ElementType, forwardRef } from 'react';
 import styled from 'styled-components';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
+// @ts-ignore
+import a11yDark from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark';
 
 // hooks
 import useSlides, { SlideObject } from 'hooks/useSlides';
@@ -9,15 +13,16 @@ import { RefProps } from '../Slide';
 
 interface TopContainerProps {
   fullScreen: boolean;
+  noContent: boolean;
 }
 
 const TopContainer = styled.div<TopContainerProps>`
-  ${({ fullScreen }) => `
+  ${({ fullScreen, noContent }) => `
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: ${noContent ? '' : 'auto'} 1fr;
     min-height: 1em;
     min-width: 1em;
-    border: 1px solid black;
+    // border: 2px solid white;
     position: relative;
 
     ${fullScreen ?
@@ -40,6 +45,7 @@ const Headers = styled.div`
   flex-direction: column;
   margin: 2em 0;
   color: white;
+  height: 100%;
 
   ${[1, 2, 3, 4, 5, 6].map((n) => `
     h${n} {
@@ -48,6 +54,10 @@ const Headers = styled.div`
       text-shadow: 5px 5px 8px #000;
     }
   `)}
+`;
+
+const CodeContainer = styled.div`
+  font-size: 2em;
 `;
 
 export enum InnerSlideOrientation {
@@ -93,7 +103,8 @@ const InnerSlide = forwardRef<RefProps, Props>((
   {
     slide: {
       headers = [],
-      innerSlides = [],
+      innerSlides,
+      content,
     },
     orientation,
     fullScreen = false,
@@ -101,10 +112,12 @@ const InnerSlide = forwardRef<RefProps, Props>((
   },
   ref
 ) => {
-  const { currentSlide, slideList, childRef } = useSlides(innerSlides, ref);
+  const { currentSlide, slideList, childRef } = useSlides(innerSlides || [], ref);
+
+  const noContent = !slideList?.length && !content;
 
   return (
-    <TopContainer className="inner-slide top-container" fullScreen={fullScreen}>
+    <TopContainer className="inner-slide top-container" fullScreen={fullScreen} noContent={noContent}>
       <div>
         {headers.length ? (
           <Headers className="inner-slide headers">
@@ -113,25 +126,35 @@ const InnerSlide = forwardRef<RefProps, Props>((
                 return null;
               }
 
-              const Tag = `h${startHeadingFrom + i}` as ElementType;
+              const Tag = `h${startHeadingFrom}` as ElementType;
               return <Tag key={i}>{header}</Tag>;
             })}
           </Headers>
         ) : null}
       </div>
-      <div>
-        <Content className="inner-slide content" orientation={orientation}>
-          {slideList.length ? slideList.map((innerSlide, i) => (
-            <InnerSlide
-              key={i}
-              slide={innerSlide}
-              orientation={invertOrientation(orientation)}
-              startHeadingFrom={startHeadingFrom + 1}
-              {...(innerSlide === currentSlide ? { ref: childRef } : {})}
-            />
-          )) : <div></div>}
-        </Content>
-      </div>
+      {noContent ? null :
+        (
+          <div>
+            <Content className="inner-slide content" orientation={orientation}>
+              {slideList.length
+                ? slideList.map((innerSlide, i) => (
+                  <InnerSlide
+                    key={i}
+                    slide={innerSlide}
+                    orientation={invertOrientation(orientation)}
+                    startHeadingFrom={startHeadingFrom + 1}
+                    {...(innerSlide === currentSlide ? { ref: childRef } : {})}
+                  />
+                ))
+                : content ? (
+                  <CodeContainer>
+                    <SyntaxHighlighter language="javascript" style={a11yDark}>{content}</SyntaxHighlighter>
+                  </CodeContainer>
+                ) : null}
+            </Content>
+          </div>
+        )
+      }
     </TopContainer>
   );
 });

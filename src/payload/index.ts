@@ -9,52 +9,19 @@ const slides: SlideObject[] = [
     headers: ['Declaring and assigning a string variable'],
     innerSlides: [
       {
-        headers: ['String with single quotes'],
+        headers: ['Single quotes: \'\''],
+        content: `var myName = 'Vladimir';`,
       },
       {
-        headers: ['String with double quotes'],
+        headers: [,,'Double quotes: ""'],
+        content: `var myName = "Vladimir";`,
       },
       {
-        headers: ['String with template literal'],
+        headers: [,,'Template literal: ``'],
+        content: 'var myName = `Vladimir`;',
       },
     ],
   }
 ];
-
-// const slides: SlideObject[] = [
-//   // {
-//   //   headers: ['Variables', 'Variables', 'Variables', 'Variables', 'Variables', 'Variables'],
-//   // },
-//   {
-//     slides: [
-//       {
-//         headers: ['Declaring a variable'],
-//         content: 'red',
-//       },
-//       {
-//         headers: ['Declaring multiple variables'],
-//         content: 'green',
-//       },
-//       {
-//         slides: [
-//           {
-//             info: 'Long way',
-//             content: 'yellow',
-//           },
-//           {
-//             info: 'Short way',
-//             content: 'purple',
-//           }
-//         ],
-//       }
-//     ]
-//   },
-//   {
-//     content: 'brow',
-//   },
-//   {
-//     content: 'skyblue',
-//   }
-// ];
 
 export default slides;

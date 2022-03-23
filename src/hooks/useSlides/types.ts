@@ -1,4 +1,5 @@
 export interface SlideObject {
-  headers?: string[];
+  headers?: Array<string | undefined>;
   innerSlides?: SlideObject[];
+  content?: string;
 }
