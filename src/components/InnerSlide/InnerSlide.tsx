@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 // hooks
@@ -6,6 +6,7 @@ import useSlides, { SlideObject } from 'hooks/useSlides';
 
 // components
 import Code from 'components/Code';
+import Paragraph from 'components/Paragraph';
 import Header from './Header';
 
 // types
@@ -14,10 +15,16 @@ import { RefProps } from '../Slide';
 interface TopContainerProps {
   fullScreen: boolean;
   noContent: boolean;
+  isShown: boolean;
+  isInFocus: boolean;
 }
 
 const TopContainer = styled.div<TopContainerProps>`
-  ${({ fullScreen, noContent }) => `
+  ${({ fullScreen, noContent, isShown, isInFocus }) => `
+    opacity: ${isShown ? isInFocus ? '1' : '0.5' : '0'};
+    width: ${isShown ? 'unset' : '0'};
+    height: ${isShown ? 'unset' : '0'};
+
     display: grid;
     grid-template-rows: ${noContent ? '' : 'auto'} 1fr;
     min-height: 1em;
@@ -34,7 +41,7 @@ const TopContainer = styled.div<TopContainerProps>`
 
     flex-grow: .00001;
     flex-shrink: .00001;
-    transition: all 0.5s;
+    transition: opacity 1s, width 1s, height 1s;
   `}
 `;
 
@@ -74,7 +81,8 @@ interface Props {
   slide: SlideObject;
   orientation: InnerSlideOrientation;
   fullScreen?: boolean;
-  isHidden?: boolean
+  isHidden?: boolean;
+  isInFocus?: boolean;
 }
 
 const InnerSlide = forwardRef<RefProps, Props>((
@@ -83,23 +91,31 @@ const InnerSlide = forwardRef<RefProps, Props>((
       headers,
       innerSlides,
       codeSnippet = '',
+      text = '',
     },
     orientation,
     fullScreen = false,
-    isHidden = false
+    isHidden = false,
+    isInFocus = false,
   },
   ref
 ) => {
   const { currentSlide, slideList, childRef } = useSlides(innerSlides || [], ref);
 
-  const noContent = !slideList?.length && !codeSnippet;
+  const [isShown, show] = useState(false);
+
+  useEffect(() => {
+    show(true);
+  }, []);
+
+  const noContent = !slideList?.length && !codeSnippet && !text;
 
   if (isHidden) {
     return null;
   }
 
   return (
-    <TopContainer fullScreen={fullScreen} noContent={noContent}>
+    <TopContainer fullScreen={fullScreen} noContent={noContent} isShown={isShown} isInFocus={isInFocus}>
       <Header headers={headers} />
       {!noContent && (
         <Content orientation={orientation}>
@@ -108,10 +124,12 @@ const InnerSlide = forwardRef<RefProps, Props>((
               key={i}
               slide={innerSlide}
               orientation={invertOrientation(orientation)}
+              isInFocus={innerSlide === currentSlide}
               {...(innerSlide === currentSlide ? { ref: childRef } : {})}
             />
           ))}
           <Code>{codeSnippet}</Code>
+          <Paragraph>{text}</Paragraph>
         </Content>
       )}
     </TopContainer>

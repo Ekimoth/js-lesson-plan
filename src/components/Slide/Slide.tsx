@@ -34,6 +34,7 @@ const Slide = forwardRef<RefProps, Props>(({ slides }, ref) => {
           fullScreen
           {...(slide === currentSlide ? { ref: childRef } : {})}
           isHidden={slide !== currentSlide}
+          isInFocus={slide === currentSlide}
         />
       ))}
     </Content>
