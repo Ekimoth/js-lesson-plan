@@ -54,7 +54,7 @@ const Content = styled.div<ContentContainerProps>`
     height: 100%;
 
     justify-content: space-evenly;
-    align-items: ${orientation === InnerSlideOrientation.COLUMN ? 'stretch' : 'center'};
+    align-items: center; // ${orientation === InnerSlideOrientation.COLUMN ? 'stretch' : 'center'};
     flex-wrap: wrap;
     
     flex-direction: ${orientation};

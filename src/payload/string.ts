@@ -15,19 +15,32 @@ const strings = [
         headers: {
           h4: "Single quote: ''",
         },
-        codeSnippet: `var myName = 'Vladimir';`,
+        codeSnippet: `var myName = 'Louie';`,
       },
       {
         headers: {
           h4: 'Double quotes: ""',
         },
-        codeSnippet: `var myName = "Vladimir";`,
+        codeSnippet: `var myName = "Louie";`,
       },
       {
         headers: {
-          h4: 'Template literal: ``',
+          h4: 'Template strings: ``',
         },
-        codeSnippet: 'var myName = `Vladimir`;',
+        codeSnippet: 'var myName = `Louie`;',
+      },
+      {
+        headers: {
+          h4: 'Multiline strings',
+          h5: 'Only with template strings',
+        },
+        codeSnippet: `var story = \`
+  This
+  is
+  a
+  multiline
+  string
+\`;`,
       },
     ],
   },
