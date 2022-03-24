@@ -95,7 +95,6 @@ const InnerSlide = forwardRef<RefProps, Props>((
   return (
     <TopContainer fullScreen={fullScreen} noContent={noContent}>
       <Header headers={headers} />
-      {false}
       {!noContent && (
         <Content orientation={orientation}>
           {slideList.map((innerSlide, i) => (

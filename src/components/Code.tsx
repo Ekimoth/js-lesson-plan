@@ -20,7 +20,7 @@ const Code: FC<Props> = ({ children: codeSnippet }) => {
 
   return (
     <CodeContainer>
-      <SyntaxHighlighter language="javascript" style={anOldHope}>{codeSnippet}</SyntaxHighlighter>
+      <SyntaxHighlighter language="javascript" style={anOldHope} wrapLines>{codeSnippet}</SyntaxHighlighter>
     </CodeContainer>
   );
 };
