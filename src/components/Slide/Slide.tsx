@@ -25,14 +25,13 @@ const Slide = forwardRef<RefProps, Props>(({ slides }, ref) => {
   const { currentSlide, childRef, key } = useSlides(slides, ref);
 
   return (
-    <Content className="slide">
+    <Content>
       <InnerSlide
         key={key}
         ref={childRef}
         slide={currentSlide}
         orientation={InnerSlideOrientation.ROW}
         fullScreen
-        startHeadingFrom={1}
       />
     </Content>
   );

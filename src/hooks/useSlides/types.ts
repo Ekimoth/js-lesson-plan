@@ -1,5 +1,5 @@
 export interface SlideObject {
-  headers?: Array<string | undefined>;
+  headers?: Record<string, string>;
   innerSlides?: SlideObject[];
-  content?: string;
+  codeSnippet?: string;
 }

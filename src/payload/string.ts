@@ -1,29 +1,35 @@
 const strings = [
   {
-    headers: ['Data Types', 'Primitive Data Types', 'String'],
+    headers: {
+      h1: 'Data Types',
+      h2: 'Primitive Data Types',
+      h3: 'String',
+    },
   },
   {
-    headers: [,,'Declaring and assigning a string variable'],
+    headers: {
+      h3: 'Declaring and assigning a string variable',
+    },
     innerSlides: [
       {
-        headers: [,'Single quotes: \'\''],
-        content: `var myName = 'Vladimir';`,
+        headers: {
+          h4: "Single quote: ''",
+        },
+        codeSnippet: `var myName = 'Vladimir';`,
       },
       {
-        headers: [,'Double quotes: ""'],
-        content: `var myName = "Vladimir";`,
+        headers: {
+          h4: 'Double quotes: ""',
+        },
+        codeSnippet: `var myName = "Vladimir";`,
       },
       {
-        headers: [,'Template literal: ``'],
-        content: 'var myName = `Vladimir`;',
+        headers: {
+          h4: 'Template literal: ``',
+        },
+        codeSnippet: 'var myName = `Vladimir`;',
       },
     ],
-  },
-  {
-    headers: ['11111111', '2222222', '33333333'],
-  },
-  {
-    headers: ['44444444', '5555555', '66666666'],
   },
 ];
 

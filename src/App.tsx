@@ -24,20 +24,18 @@ const Button = styled.button<ButtonProps>`
     border: none;
     color: white;
     display: flex;
-    padding: 0.3em;
-    cursor: pointer;
-
-    :active {
-      background-color: #181717;
-    }
-
+    padding: 0.5em;
+    transition: opacity 0.3s;
     opacity: 0;
 
     :hover {
       opacity: 1;
+      cursor: pointer;
     }
-
-    transition: opacity 0.3s;
+    
+    :active {
+      background-color: #181717;
+    }
   `}
 `;
 
@@ -46,6 +44,7 @@ const Div = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  padding: 1.6em;
 `;
 
 const BlurredBackground = styled.div`
@@ -86,9 +85,7 @@ function App() {
   return (
     <Div>
       <BlurredBackground />
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-        <Slide ref={slideRef} slides={slides} />
-      </div>
+      <Slide ref={slideRef} slides={slides as any} />
       <Button float="left" onClick={onPrev}><IoIosArrowBack /></Button>
       <Button float="right" onClick={onNext}><IoIosArrowForward /></Button>
       <KeyboardListeners onLeft={onPrev} onRight={onNext} />
