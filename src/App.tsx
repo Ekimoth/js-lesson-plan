@@ -10,6 +10,9 @@ import KeyboardListeners from 'components/KeyboardListeners';
 // payload
 import slides from 'payload';
 
+// images
+import backgroundImage from 'img/Schemytrio.jpg';
+
 interface ButtonProps {
   float: 'left' | 'right';
 }
@@ -48,7 +51,7 @@ const Div = styled.div`
 `;
 
 const BlurredBackground = styled.div`
-  background-image: url('/src/img/schemytrio.jpg');
+  background-image: url(${backgroundImage});
   background-color-alpha: 0.5;
   filter: blur(6px);
   opacity: 0.93;
