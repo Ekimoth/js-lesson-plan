@@ -21,7 +21,7 @@ interface TopContainerProps {
 
 const TopContainer = styled.div<TopContainerProps>`
   ${({ fullScreen, noContent, isShown, isInFocus }) => `
-    opacity: ${isShown ? isInFocus ? '1' : '0.5' : '0'};
+    opacity: ${isShown ? isInFocus ? '1' : '0.4' : '0'};
     width: ${isShown ? 'unset' : '0'};
     height: ${isShown ? 'unset' : '0'};
 
@@ -42,6 +42,10 @@ const TopContainer = styled.div<TopContainerProps>`
     flex-grow: .00001;
     flex-shrink: .00001;
     transition: opacity 1s, width 1s, height 1s;
+
+    :hover {
+      opacity: 1;
+    }
   `}
 `;
 
@@ -128,8 +132,8 @@ const InnerSlide = forwardRef<RefProps, Props>((
               {...(innerSlide === currentSlide ? { ref: childRef } : {})}
             />
           ))}
-          <Code>{codeSnippet}</Code>
           <Paragraph>{text}</Paragraph>
+          <Code>{codeSnippet}</Code>
         </Content>
       )}
     </TopContainer>

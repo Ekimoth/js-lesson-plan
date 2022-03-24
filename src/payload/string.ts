@@ -1,4 +1,6 @@
-const strings = [
+import { SlideObject } from 'hooks/useSlides';
+
+const strings: SlideObject[] = [
   {
     headers: {
       h1: 'Data Types',
@@ -49,7 +51,8 @@ const strings = [
     innerSlides: [
       {
         headers: {
-          h4: 'Is the same as: The === operator',
+          h4: 'Is equal to',
+          h5: 'The === operator',
         },
         innerSlides: [
           {
@@ -79,7 +82,8 @@ console.log(savedPassword === enteredPassword); // true
     innerSlides: [
       {
         headers: {
-          h4: 'Is different from: The !== operator',
+          h4: 'Is not equal to',
+          h5: 'The !== operator',
         },
         innerSlides: [
           {
@@ -143,13 +147,23 @@ console.log(fullName); // James Bond
     innerSlides: [
       {
         headers: {
+          h3: 'Remember!',
           h4: "The - operator can't be used with strings",
         },
         codeSnippet: "console.log('James Bond' - 'Bond'); // NaN",
       },
+    ],
+  },
+  {
+    headers: {
+      h3: '"Subtracting" strings',
+      h4: '',
+      h2: 'Bonus',
+    },
+    innerSlides: [
       {
         headers: {
-          h4: 'Bonus: Removing part of a string',
+          h4: 'Removing part of a string',
         },
         codeSnippet: `var fullName = 'James Bond';
 console.log(fullName.replace(' Bond', ''); // James`,
@@ -187,7 +201,15 @@ console.log(fullName.replace('Bond', 'Hetfield'); // James Hetfield`,
         ],
       },
     ]
-  }
+  },
+  {
+    headers: {
+      h1: 'Congratulations!',
+      h3: 'You completed the course on',
+      h2: '   ',
+      h4: 'JavaScript Data Types • Primitive Data Types • String',
+    },
+  },
 ];
 
 export default strings;

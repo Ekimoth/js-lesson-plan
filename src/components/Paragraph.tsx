@@ -9,6 +9,7 @@ const P = styled.p`
   max-width: 90vw;
   font-size: 2em;
   text-align: justify;
+  max-width: 90vw;
 `;
 
 interface Props {
