@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
 // @ts-ignore
-import a11yDark from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark';
+import anOldHope from 'react-syntax-highlighter/dist/esm/styles/hljs/an-old-hope';
 
 // hooks
 import useSlides, { SlideObject } from 'hooks/useSlides';
@@ -149,7 +149,7 @@ const InnerSlide = forwardRef<RefProps, Props>((
                 ))
                 : content ? (
                   <CodeContainer>
-                    <SyntaxHighlighter language="javascript" style={a11yDark}>{content}</SyntaxHighlighter>
+                    <SyntaxHighlighter language="javascript" style={anOldHope}>{content}</SyntaxHighlighter>
                   </CodeContainer>
                 ) : null}
             </Content>

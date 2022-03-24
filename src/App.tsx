@@ -51,7 +51,8 @@ const Div = styled.div`
 const BlurredBackground = styled.div`
   background-image: url('/src/img/schemytrio.jpg');
   background-color-alpha: 0.5;
-  filter: blur(12px);
+  filter: blur(6px);
+  opacity: 0.93;
   position: absolute;
   top: 0;
   right: 0;
