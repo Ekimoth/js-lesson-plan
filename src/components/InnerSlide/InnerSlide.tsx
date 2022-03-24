@@ -74,6 +74,7 @@ interface Props {
   slide: SlideObject;
   orientation: InnerSlideOrientation;
   fullScreen?: boolean;
+  isHidden?: boolean
 }
 
 const InnerSlide = forwardRef<RefProps, Props>((
@@ -85,12 +86,17 @@ const InnerSlide = forwardRef<RefProps, Props>((
     },
     orientation,
     fullScreen = false,
+    isHidden = false
   },
   ref
 ) => {
   const { currentSlide, slideList, childRef } = useSlides(innerSlides || [], ref);
 
   const noContent = !slideList?.length && !codeSnippet;
+
+  if (isHidden) {
+    return null;
+  }
 
   return (
     <TopContainer fullScreen={fullScreen} noContent={noContent}>

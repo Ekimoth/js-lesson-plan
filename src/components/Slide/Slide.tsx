@@ -26,13 +26,16 @@ const Slide = forwardRef<RefProps, Props>(({ slides }, ref) => {
 
   return (
     <Content>
-      <InnerSlide
-        key={key}
-        ref={childRef}
-        slide={currentSlide}
-        orientation={InnerSlideOrientation.ROW}
-        fullScreen
-      />
+      {slides.map((slide, i) => (
+        <InnerSlide
+          key={i}
+          slide={slide}
+          orientation={InnerSlideOrientation.ROW}
+          fullScreen
+          {...(slide === currentSlide ? { ref: childRef } : {})}
+          isHidden={slide !== currentSlide}
+        />
+      ))}
     </Content>
   );
 });
