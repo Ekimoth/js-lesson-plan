@@ -23,8 +23,8 @@ interface Props {
 }
 
 const Slide = forwardRef<RefProps, Props>(({ slides }, ref) => {
-  const [, { setSlide }] = useProgress();
-  const { currentSlide, childRef } = useSlides(slides, ref);
+  const [{ progress: { lastVisited: [, savedSlidePage] } }, { setSlide }] = useProgress();
+  const { currentSlide, childRef } = useSlides(slides, ref, savedSlidePage);
 
   useLayoutEffect(() => {
     const slideNum = slides.findIndex((slide) => slide === currentSlide);
