@@ -6,11 +6,11 @@ import { SlideObject } from '../types';
 const useSlideSwitch = (slides: SlideObject[]) => {
   const [index, setIndex] = useState(0);
 
-  const [hasPrev, hasNext] = useMemo(() => [index > 0, index < slides.length - 1], [index]);
+  const [hasPrev, hasNext] = useMemo(() => [index > 0, index < slides.length - 1], [slides, index]);
 
-  const currentSlide = useMemo(() => slides[index], [index]);
+  const currentSlide = useMemo(() => slides[index], [slides, index]);
 
-  const slideList = useMemo(() => slides.slice(0, index + 1), [index]);
+  const slideList = useMemo(() => slides.slice(0, index + 1), [slides, index]);
 
   const gotoNext = useCallback(() => {
     if (hasNext) {

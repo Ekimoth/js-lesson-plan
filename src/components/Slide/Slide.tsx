@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
 
 // components
@@ -6,6 +6,7 @@ import InnerSlide, { InnerSlideOrientation } from 'components/InnerSlide';
 
 // hooks
 import useSlides, { SlideObject } from 'hooks/useSlides';
+import useProgress from 'hooks/useProgress';
 
 const Content = styled.div`
   position: relative;
@@ -22,7 +23,13 @@ interface Props {
 }
 
 const Slide = forwardRef<RefProps, Props>(({ slides }, ref) => {
-  const { currentSlide, childRef, key } = useSlides(slides, ref);
+  const [, { setSlide }] = useProgress();
+  const { currentSlide, childRef } = useSlides(slides, ref);
+
+  useLayoutEffect(() => {
+    const slideNum = slides.findIndex((slide) => slide === currentSlide);
+    setSlide(slideNum);
+  }, [slides, currentSlide, setSlide]);
 
   return (
     <Content>
