@@ -1,5 +1,15 @@
-import { FC } from 'react';
-import styled from 'styled-components';
+import { FC, useState } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
+
+interface GlobalStyleProps {
+  fontSize: string;
+}
+
+const RootStyle = createGlobalStyle<GlobalStyleProps>`
+  #root {
+    ${({ fontSize }) => `font-size: ${fontSize};`}
+  }
+`;
 
 interface ButtonProps {
   orientation: 'top' | 'right' | 'bottom' | 'left';
@@ -39,7 +49,7 @@ const LeftArea = styled.div`
   top: 0;
   left: 0;
   bottom: 0;
-  padding-right: 3em;
+  padding-right: 8em;
 
   :hover ${Button} {
     opacity: 1;
@@ -51,7 +61,7 @@ const RightArea = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-  padding-left: 3em;
+  padding-left: 8em;
 
   :hover ${Button} {
     opacity: 1;
@@ -63,7 +73,7 @@ const TopArea = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  padding-bottom: 3em;
+  padding-bottom: 8em;
 
   :hover ${Button} {
     opacity: 1;
@@ -76,18 +86,31 @@ interface Props {
   onHome: () => void;
 }
 
-const ControlsLayer: FC<Props> = ({ onPrev, onNext, onHome }) => (
-  <>
-    <TopArea>
-      <Button orientation="top" onClick={onHome}>🏠</Button>
-    </TopArea>
-    <LeftArea>
-      <Button orientation="left" onClick={onPrev}>🡄</Button>
-    </LeftArea>
-    <RightArea>
-      <Button orientation="right" onClick={onNext}>🡆</Button>
-    </RightArea>
-  </>
-);
+const ControlsLayer: FC<Props> = ({ onPrev, onNext, onHome }) => {
+  const [fontSize] = useState(13);
+
+  // const decreaseFontSize = () => {
+  //   setFontSize((fz) => fz - 1);
+  // };
+
+  // const increaseFontSize = () => {
+  //   setFontSize((fz) => fz + 1);
+  // };
+
+  return (
+    <>
+      <RootStyle fontSize={`${fontSize}px`} />
+      <TopArea>
+        <Button orientation="top" onClick={onHome}>🏠</Button>
+      </TopArea>
+      <LeftArea>
+        <Button orientation="left" onClick={onPrev}>🡄</Button>
+      </LeftArea>
+      <RightArea>
+        <Button orientation="right" onClick={onNext}>🡆</Button>
+      </RightArea>
+    </>
+  );
+};
 
 export default ControlsLayer;

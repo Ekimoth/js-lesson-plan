@@ -86,7 +86,9 @@ const useProgress = () => {
     }));
   }, [updateGlobalState]);
 
-  return useMemo(() => [{ currentTopic, progress }, { setTopic, setSlide }] as const, [currentTopic, progress, setTopic, setSlide]);
+  return useMemo(() => [{ currentTopic, progress }, { setTopic, setSlide }] as const,
+    [currentTopic, progress, setTopic, setSlide]
+  );
 };
 
 export default useProgress;

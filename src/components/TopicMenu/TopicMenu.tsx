@@ -40,7 +40,7 @@ const Grid = styled.div`
 `;
 
 const TopicMenu: FC = () => {
-  const [{ currentTopic }, { setTopic }] = useProgress();
+  const [{ currentTopic, progress: { knownTopics } }, { setTopic }] = useProgress();
 
   const goHome = useCallback(() => {
     setTopic(null);
@@ -52,7 +52,7 @@ const TopicMenu: FC = () => {
       {!currentTopic ? (
         <Grid>
           {payload.map((topic) => (
-            <TopicCard key={topic.id} topic={topic} onSelect={setTopic} />
+            <TopicCard key={topic.id} topic={topic} onSelect={setTopic} isNew={!knownTopics.includes(topic.id)} />
           ))}
         </Grid>
       ) : <Topic topicSlides={currentTopic.slides} goHome={goHome} />}
