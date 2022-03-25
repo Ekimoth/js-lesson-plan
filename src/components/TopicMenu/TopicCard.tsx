@@ -46,18 +46,29 @@ const Box = styled.div`
   }
 `;
 
+const MarkedAsNew = styled.span`
+  position: absolute;
+  bottom: 0.3em;
+  right: 0.5em;
+  color: #a71414;
+  font-size: 2em;
+  user-select: none;
+`;
+
 interface Props {
   topic: TopicObject;
   onSelect: (topic: TopicObject) => void;
+  isNew: boolean;
 }
 
-const TopicCard: FC<Props> = ({ topic, topic: { id, title, group }, onSelect }) => {
+const TopicCard: FC<Props> = ({ topic, topic: { id, title, group }, onSelect, isNew }) => {
   const onClick = useCallback(() => {
     onSelect(topic);
   }, [topic, onSelect]);
 
   return (
     <Box onClick={onClick}>
+      {isNew ? <MarkedAsNew title="New topic added since your last visit">New</MarkedAsNew> : null}
       {id ? <TopicNumber>{id}</TopicNumber> : null}
       {group ? <Group>{group}</Group> : null}
       <Title>{title}</Title>
