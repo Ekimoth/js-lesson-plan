@@ -1,34 +1,28 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "useDefineForClassFields": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
     "skipLibCheck": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": true,
     "jsx": "react-jsx",
+    "useDefineForClassFields": true,
     "baseUrl": "src",
     "sourceMap": true,
-    // enable strict null checks as a best practice
     "strictNullChecks": true,
-    // Process & infer types from .js files.
-    "allowJs": true,
-    // Don't emit; allow Babel to transform files.
-    "noEmit": true,
-    // Import non-ES modules as default imports.
-    "esModuleInterop": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "es2015",
-      "es2016.array.include",
-      "es2017.object",
-      "ESNext"
-    ],
     "removeComments": true,
     "alwaysStrict": true,
     "allowUnreachableCode": false,
@@ -37,7 +31,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noImplicitReturns": false,
-    "noFallthroughCasesInSwitch": true,
     "importHelpers": true,
     "types": [
       "node"
@@ -45,10 +38,5 @@
   },
   "include": [
     "src"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
   ]
 }
