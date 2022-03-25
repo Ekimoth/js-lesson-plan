@@ -3,8 +3,8 @@ import { useCallback, useMemo, useState } from 'react';
 // types
 import { SlideObject } from '../types';
 
-const useSlideSwitch = (slides: SlideObject[]) => {
-  const [index, setIndex] = useState(0);
+const useSlideSwitch = (slides: SlideObject[], initialIndex = 0) => {
+  const [index, setIndex] = useState(initialIndex);
 
   const [hasPrev, hasNext] = useMemo(() => [index > 0, index < slides.length - 1], [slides, index]);
 

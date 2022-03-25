@@ -40,11 +40,7 @@ const Grid = styled.div`
 `;
 
 const TopicMenu: FC = () => {
-  const [selectedTopic, { setTopic }] = useProgress();
-
-  useEffect(() => {
-    console.log('vvvvv selectedTopic', selectedTopic);
-  }, [selectedTopic]);
+  const [{ currentTopic }, { setTopic }] = useProgress();
 
   const goHome = useCallback(() => {
     setTopic(null);
@@ -53,13 +49,13 @@ const TopicMenu: FC = () => {
   return (
     <TopContainer>
       <BlurredBackground />
-      {!selectedTopic ? (
+      {!currentTopic ? (
         <Grid>
           {payload.map((topic) => (
             <TopicCard key={topic.id} topic={topic} onSelect={setTopic} />
           ))}
         </Grid>
-      ) : <Topic topicSlides={selectedTopic.slides} goHome={goHome} />}
+      ) : <Topic topicSlides={currentTopic.slides} goHome={goHome} />}
     </TopContainer>
   );
 };

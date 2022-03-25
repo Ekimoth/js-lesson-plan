@@ -11,8 +11,8 @@ export interface RefProps {
   gotoNext: () => boolean;
 }
 
-const useSlides = (slides: SlideObject[], selfRef: ForwardedRef<RefProps>) => {
-  const [{ currentSlide, slideList, key }, { gotoPrev, gotoNext }] = useSlide(slides);
+const useSlides = (slides: SlideObject[], selfRef: ForwardedRef<RefProps>, initialIndex = 0) => {
+  const [{ currentSlide, slideList, key }, { gotoPrev, gotoNext }] = useSlide(slides, initialIndex);
 
   const childRef = useRef<RefProps>(null);
 
