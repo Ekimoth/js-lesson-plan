@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 // hooks
@@ -106,10 +106,14 @@ const InnerSlide = forwardRef<RefProps, Props>((
 ) => {
   const { currentSlide, slideList, childRef } = useSlides(innerSlides || [], ref);
 
+  const topRef = useRef<HTMLDivElement>(null);
+
   const [isShown, show] = useState(false);
 
   useEffect(() => {
     show(true);
+
+    topRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
   const noContent = !slideList?.length && !codeSnippet && !text;
@@ -119,7 +123,7 @@ const InnerSlide = forwardRef<RefProps, Props>((
   }
 
   return (
-    <TopContainer fullScreen={fullScreen} noContent={noContent} isShown={isShown} isInFocus={isInFocus}>
+    <TopContainer ref={topRef} fullScreen={fullScreen} noContent={noContent} isShown={isShown} isInFocus={isInFocus}>
       <Header headers={headers} />
       {!noContent && (
         <Content orientation={orientation}>
