@@ -34,7 +34,9 @@ const useProgress = () => {
         throw Error();
       }
     } catch {
-      const knownTopics = payload.map(({ id }) => id);
+      const knownTopics = payload
+        .filter(({ isPlaceholder }) => !isPlaceholder)
+        .map(({ id }) => id);
 
       return { knownTopics, lastVisited: [] };
     }

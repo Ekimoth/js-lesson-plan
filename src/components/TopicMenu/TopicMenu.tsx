@@ -34,8 +34,8 @@ const BlurredBackground = styled.div`
 const Grid = styled.div`
   display: grid;
   padding: 2em;
-  grid-template-columns: repeat(auto-fill, minmax(15em, 15em));
-  grid-auto-rows: 15em;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  grid-auto-rows: minmax(15em, 1fr);
   gap: 1em;
 `;
 
