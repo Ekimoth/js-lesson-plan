@@ -1,8 +1,8 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback } from 'react';
 import styled from 'styled-components';
 
 // payload
-import payload, { TopicObject } from 'payload';
+import payload from 'payload';
 
 // images
 import backgroundImage from 'img/Schemytrio.jpg';
@@ -10,6 +10,9 @@ import backgroundImage from 'img/Schemytrio.jpg';
 // components
 import TopicCard from './TopicCard';
 import Topic from 'components/Topic';
+import DocumentTitle from 'components/DocumentTitle';
+
+// hooks
 import useProgress from 'hooks/useProgress';
 
 const TopContainer = styled.div`
@@ -51,6 +54,7 @@ const TopicMenu: FC = () => {
       <BlurredBackground />
       {!currentTopic ? (
         <Grid>
+          <DocumentTitle>JavaScript: Select topic</DocumentTitle>
           {payload.map((topic) => (
             <TopicCard key={topic.id} topic={topic} onSelect={setTopic} isNew={!knownTopics.includes(topic.id)} />
           ))}
