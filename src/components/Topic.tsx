@@ -7,6 +7,7 @@ import KeyboardListeners from 'components/KeyboardListeners';
 
 // types
 import { SlideObject } from 'hooks/useSlides';
+import { TopicObject } from 'payload';
 
 // components
 import ControlsLayer from './ControlsLayer';
@@ -14,17 +15,17 @@ import ControlsLayer from './ControlsLayer';
 const Div = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
   padding: 1.6em;
 `;
 
 interface Props {
-  topicSlides: SlideObject[];
+  topic: TopicObject;
   goHome: () => void;
 }
 
-const Topic: FC<Props> = ({ topicSlides, goHome }) => {
+const Topic: FC<Props> = ({ topic: { title, slides }, goHome }) => {
   const slideRef = useRef<RefProps>(null);
 
   const onPrev = useCallback(() => {
@@ -49,7 +50,7 @@ const Topic: FC<Props> = ({ topicSlides, goHome }) => {
 
   return (
     <Div>
-      <Slide ref={slideRef} slides={topicSlides} />
+      <Slide ref={slideRef} title={title} slides={slides} />
       <KeyboardListeners onLeft={onPrev} onRight={onNext} />
       <ControlsLayer onPrev={onPrev} onNext={onNext} onHome={goHome} />
     </Div>

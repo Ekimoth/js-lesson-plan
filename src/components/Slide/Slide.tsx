@@ -1,8 +1,9 @@
-import { forwardRef, useEffect, useLayoutEffect, useState } from 'react';
+import { forwardRef, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 
 // components
 import InnerSlide, { InnerSlideOrientation } from 'components/InnerSlide';
+import DocumentTitle from 'components/DocumentTitle';
 
 // hooks
 import useSlides, { SlideObject } from 'hooks/useSlides';
@@ -19,10 +20,11 @@ export interface RefProps {
 }
 
 interface Props {
+  title: string;
   slides: SlideObject[];
 }
 
-const Slide = forwardRef<RefProps, Props>(({ slides }, ref) => {
+const Slide = forwardRef<RefProps, Props>(({ title, slides }, ref) => {
   const [{ progress: { lastVisited: [, savedSlidePage] } }, { setSlide }] = useProgress();
   const { currentSlide, childRef } = useSlides(slides, ref, savedSlidePage);
 
@@ -33,6 +35,7 @@ const Slide = forwardRef<RefProps, Props>(({ slides }, ref) => {
 
   return (
     <Content>
+      <DocumentTitle>{title}</DocumentTitle>
       {slides.map((slide, i) => (
         <InnerSlide
           key={i}

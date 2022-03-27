@@ -55,7 +55,7 @@ const TopicMenu: FC = () => {
             <TopicCard key={topic.id} topic={topic} onSelect={setTopic} isNew={!knownTopics.includes(topic.id)} />
           ))}
         </Grid>
-      ) : <Topic topicSlides={currentTopic.slides} goHome={goHome} />}
+      ) : <Topic topic={currentTopic} goHome={goHome} />}
     </TopContainer>
   );
 };
