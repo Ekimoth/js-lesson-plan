@@ -19,31 +19,45 @@ const Group = styled.span`
   text-align: center;
 `;
 
-const Title = styled.span`
-  color: maroon;
-  font-size: 1.5em;
-  text-align: center;
-  color: #2784a3;
+interface TitleProps {
+  isDisabled: boolean;
+}
+
+const Title = styled.span<TitleProps>`
+  ${({ isDisabled }) => `
+    font-size: 1.5em;
+    text-align: center;
+    color: ${isDisabled ? 'gray' : '#2784a3'};
+  `}
 `;
 
-const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-  background-color: black;
-  color: gray;
-  border: 2px solid gray;
-  border-radius: 10px;
-  transition: background-color 0.5s, transform 0.5s;
+interface BoxProps {
+  isDisabled: boolean;
+}
 
-  :hover {
-    background-color: #131516;
-    cursor: pointer;
-    transform: scale(1.03);
-  }
+const Box = styled.div<BoxProps>`
+  ${({ isDisabled }) => `
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    background-color: black;
+    color: gray;
+    border: 2px solid gray;
+    border-radius: 10px;
+    transition: background-color 0.5s, transform 0.5s;
+    user-select: none;
+
+    ${isDisabled ? '' : `
+      :hover {
+        background-color: #131516;
+        cursor: pointer;
+        transform: scale(1.03);
+      }
+    `}
+  `}
 `;
 
 const MarkedAsNew = styled.span`
@@ -52,7 +66,14 @@ const MarkedAsNew = styled.span`
   right: 0.5em;
   color: #a71414;
   font-size: 2em;
-  user-select: none;
+`;
+
+const MarkedAsNotAvailable = styled.span`
+  position: absolute;
+  bottom: 0.3em;
+  right: 0.2em;
+  color: gray;
+  font-size: 2em;
 `;
 
 interface Props {
@@ -61,17 +82,22 @@ interface Props {
   isNew: boolean;
 }
 
-const TopicCard: FC<Props> = ({ topic, topic: { id, title, group }, onSelect, isNew }) => {
+const TopicCard: FC<Props> = ({ topic, topic: { id, title, group, isPlaceholder = false }, onSelect, isNew }) => {
   const onClick = useCallback(() => {
+    if (isPlaceholder) {
+      return;
+    }
+
     onSelect(topic);
-  }, [topic, onSelect]);
+  }, [topic, onSelect, isPlaceholder]);
 
   return (
-    <Box onClick={onClick}>
-      {isNew ? <MarkedAsNew title="New topic added since your last visit">New</MarkedAsNew> : null}
+    <Box onClick={onClick} isDisabled={isPlaceholder}>
+      {isNew && !isPlaceholder ? <MarkedAsNew title="New topic added since your last visit">New</MarkedAsNew> : null}
+      {isPlaceholder ? <MarkedAsNotAvailable title="Not available yet">🚫</MarkedAsNotAvailable> : null}
       {id ? <TopicNumber>{id}</TopicNumber> : null}
       {group ? <Group>{group}</Group> : null}
-      <Title>{title}</Title>
+      <Title isDisabled={isPlaceholder}>{title}</Title>
     </Box>
   );
 };
