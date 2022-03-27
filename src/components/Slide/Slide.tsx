@@ -35,7 +35,7 @@ const Slide = forwardRef<RefProps, Props>(({ title, slides }, ref) => {
 
   return (
     <Content>
-      <DocumentTitle>{title}</DocumentTitle>
+      <DocumentTitle>{`JavaScript: ${title}`}</DocumentTitle>
       {slides.map((slide, i) => (
         <InnerSlide
           key={i}
