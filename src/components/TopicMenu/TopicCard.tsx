@@ -19,16 +19,10 @@ const Group = styled.span`
   text-align: center;
 `;
 
-interface TitleProps {
-  isDisabled: boolean;
-}
-
-const Title = styled.span<TitleProps>`
-  ${({ isDisabled }) => `
-    font-size: 1.5em;
-    text-align: center;
-    color: ${isDisabled ? 'gray' : '#2784a3'};
-  `}
+const Title = styled.span`
+  font-size: 1.5em;
+  text-align: center;
+  color: #2784a3;
 `;
 
 interface BoxProps {
@@ -50,7 +44,7 @@ const Box = styled.div<BoxProps>`
     transition: background-color 0.5s, transform 0.5s;
     user-select: none;
 
-    ${isDisabled ? '' : `
+    ${isDisabled ? 'opacity: 0.4;' : `
       :hover {
         background-color: #131516;
         cursor: pointer;
@@ -92,12 +86,12 @@ const TopicCard: FC<Props> = ({ topic, topic: { id, title, group, isPlaceholder 
   }, [topic, onSelect, isPlaceholder]);
 
   return (
-    <Box onClick={onClick} isDisabled={isPlaceholder}>
+    <Box onClick={onClick} isDisabled={isPlaceholder} title={isPlaceholder ? 'Not available yet' : ''}>
       {isNew && !isPlaceholder ? <MarkedAsNew title="New topic added since your last visit">New</MarkedAsNew> : null}
-      {isPlaceholder ? <MarkedAsNotAvailable title="Not available yet">🚫</MarkedAsNotAvailable> : null}
+      {isPlaceholder ? <MarkedAsNotAvailable>🚫</MarkedAsNotAvailable> : null}
       {id ? <TopicNumber>{id}</TopicNumber> : null}
       {group ? <Group>{group}</Group> : null}
-      <Title isDisabled={isPlaceholder}>{title}</Title>
+      <Title>{title}</Title>
     </Box>
   );
 };
