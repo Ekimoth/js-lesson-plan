@@ -2,18 +2,18 @@
 import { SlideObject } from 'hooks/useSlides';
 
 // data
-import variables from './variables';
-import boolean from './boolean';
-import numbers from './numbers';
-import strings from './string';
-import theUndefined from './undefined';
-import theNull from './null';
-import primitivesConversion from './primitivesConversion';
-import conditionalsIf from './conditionalsIf';
-import conditionalsIfElse from './conditionalsIfElse';
-import conditionalsIfElseIf from './conditionalsIfElseIf';
-import loopsFor from './loopsFor';
-import functions from './function';
+import variables from './1-variables';
+import boolean from './2-boolean';
+import numbers from './3-';
+import strings from './4-string';
+import theUndefined from './5-undefined';
+import theNull from './6-null';
+import primitivesConversion from './7-primitivesConversion';
+import conditionalsIf from './8-conditionalsIf';
+import conditionalsIfElse from './9-conditionalsIfElse';
+import conditionalsIfElseIf from './10-conditionalsIfElseIf';
+import loopsFor from './11-loopsFor';
+import functions from './12-function';
 
 export interface TopicObject {
   id: number;
