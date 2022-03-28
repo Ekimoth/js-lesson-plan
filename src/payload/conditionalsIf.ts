@@ -19,7 +19,7 @@ const conditionalsIf: TopicObject = {
       innerSlides: [
         {
           headers: {
-            h4: 'How it looks',
+            h4: 'How it looks in code',
           },
           codeSnippet: `if (condition) {
   // a code that ONLY gets run if the {condition} is true   
@@ -36,8 +36,8 @@ const conditionalsIf: TopicObject = {
           text: "Think of it as a boolean - it's either true or false",
           innerSlides: [
             {
-              codeSnippet: `// 2 + 3 === 5 // true - a boolean
-// 'password123' === 'password456' // false - also a boolean
+              codeSnippet: `2 + 3 === 5 // true - a boolean
+'password123' === 'password456' // false - also a boolean
 `,
             },
             {
