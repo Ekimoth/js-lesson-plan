@@ -10,6 +10,7 @@ const P = styled.p`
   font-size: 2em;
   text-align: justify;
   max-width: 90vw;
+  white-space: break-spaces;
 `;
 
 interface Props {

@@ -127,6 +127,8 @@ const InnerSlide = forwardRef<RefProps, Props>((
       <Header headers={headers} />
       {!noContent && (
         <Content orientation={orientation}>
+          <Paragraph>{text}</Paragraph>
+          <Code>{codeSnippet}</Code>
           {slideList.map((innerSlide, i) => (
             <InnerSlide
               key={i}
@@ -136,8 +138,6 @@ const InnerSlide = forwardRef<RefProps, Props>((
               {...(innerSlide === currentSlide ? { ref: childRef } : {})}
             />
           ))}
-          <Paragraph>{text}</Paragraph>
-          <Code>{codeSnippet}</Code>
         </Content>
       )}
     </TopContainer>
