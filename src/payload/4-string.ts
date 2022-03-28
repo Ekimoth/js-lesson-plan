@@ -186,26 +186,26 @@ console.log(fullName.replace('Bond', 'Hetfield'); // James Hetfield`,
         h2: 'Exercise time',
       },
     },
-    {
-      headers: {
-        h2: 'Exercise time',
-      },
-      innerSlides: [
-        {
-          innerSlides: [
-            {
-              text: '1. Excercise text',
-            },
-            {
-              headers: {
-                h4: 'The solution',
-              },
-              codeSnippet: 'var vvv = "ddd";',
-            },
-          ],
-        },
-      ]
-    },
+    // {
+    //   headers: {
+    //     h2: 'Exercise time',
+    //   },
+    //   innerSlides: [
+    //     {
+    //       innerSlides: [
+    //         {
+    //           text: '1. Excercise text',
+    //         },
+    //         {
+    //           headers: {
+    //             h4: 'The solution',
+    //           },
+    //           codeSnippet: 'var vvv = "ddd";',
+    //         },
+    //       ],
+    //     },
+    //   ]
+    // },
     {
       headers: {
         h1: 'Congratulations!',

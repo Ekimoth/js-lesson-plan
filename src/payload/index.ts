@@ -4,7 +4,7 @@ import { SlideObject } from 'hooks/useSlides';
 // data
 import variables from './1-variables';
 import boolean from './2-boolean';
-import numbers from './3-';
+import numbers from './3-number';
 import strings from './4-string';
 import theUndefined from './5-undefined';
 import theNull from './6-null';
@@ -12,8 +12,9 @@ import primitivesConversion from './7-primitivesConversion';
 import conditionalsIf from './8-conditionalsIf';
 import conditionalsIfElse from './9-conditionalsIfElse';
 import conditionalsIfElseIf from './10-conditionalsIfElseIf';
-import loopsFor from './11-loopsFor';
-import functions from './12-function';
+import loops from './11-loops';
+import forLoop from './12-forLoop';
+import functions from './13-function';
 
 export interface TopicObject {
   id: number;
@@ -34,7 +35,8 @@ const slides: TopicObject[] = [
   conditionalsIf,
   conditionalsIfElse,
   conditionalsIfElseIf,
-  loopsFor,
+  loops,
+  forLoop,
   functions,
 ];
 
