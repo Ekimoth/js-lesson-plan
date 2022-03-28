@@ -92,7 +92,7 @@ const ControlsLayer: FC<Props> = ({ onPrev, onNext, onHome }) => {
   // const decreaseFontSize = () => {
   //   setFontSize((fz) => fz - 1);
   // };
-
+  // 
   // const increaseFontSize = () => {
   //   setFontSize((fz) => fz + 1);
   // };
