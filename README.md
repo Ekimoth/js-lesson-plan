@@ -1,46 +1,261 @@
-# Getting Started with Create React App
+# CodeAcademy - FrontEnd Development Course
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<sub>Authored by: Vladimir Dimitrovski, Senior Front-End Developer at InPlayer</sub>
 
-## Available Scripts
+## JavaScript
 
-In the project directory, you can run:
+- Variables
+  - Declaring a variable
+  - Declaring multiple variables
+  - Assigning a value to a variable: The `=` operator
+  - Reading/accessing a variable
+    - Displaying/printing a variable: `console.log()`, `alert()` etc.
+  - Modifying a variable
+  - Variables with no value: `undefined`
+- The Global Object or "namespace": `window`
+- Data types
+  - Primitive data types
+  - Non-primitive data types
+- Primitive data types:
+  - `boolean`, `number`, `string`
+  - `undefined` VS `null`
+  - `boolean`
+    - Single _boolean_
+      - Declaring and assigning a _boolean_ variable: `true` or `false`
+      - Negating a _boolean_ value with _NOT_: The `!` operator
+    - Multiple _booleans_
+      - Comparing multiple _booleans_: The `===` and `!==` operators
+      - Combining multiple _booleans_ with _AND_: The `&&` operator
+      - Combining multiple _booleans_ _OR_: The `||` operator
+  - `number`
+    - Single _number_
+      - Declaring and assigning a _number_ variable
+      - Incrementing the value of a _number_ variable: The `++` operator
+      - Decrementing the value of a _number_ variable: The `--` operator
+    - Multiple _numbers_
+      - Comparing multiple _numbers_: The `===`, `!==`, `>`, `>=`, `<` and `<=` operators
+      - Adding: The `+` operator
+      - Subtracting: The `-` operator
+      - Multiplying: The `*` operator
+      - Dividing: The `/` operator
+      - Bonus
+        - Remainder of dividing: The `%` operator
+        - Exponentiation: The `**` operator
+    - The numeric non-value: `NaN`
+      - `NaN` as a result from a mathematical operation that is enable to deliver a valid numeric result
+        - Number cannot be parsed: _parseInt('blabla')_ or _Number(undefined)_
+        - Math operation where the result is not a real number: _Math.sqrt(-1)_
+        - Operand of an argument is `NaN`: _7 ** NaN_
+        - Dividing by 0: _17 / 0_
+  - `string`
+    - Single _string_
+      - Declaring and assigning a _string_ variable
+        - Singleline _string_ with _singlequotes_ `''` or _doublequotes_ `""`
+        - Multiline _string_ with template strings
+    - Multiple _strings_
+      - Comparing multiple _strings_: The `===` and `!==` operators
+      - Concatenating multiple _strings_: The `+` operator
+      - The `-` operator cannot be used for `strings`
+      - Bonus
+        - Removing and replacing a part of a _string_ with `{string}.replace()`
+  - The "non-type" primitive type: `undefined`
+    - `undefined` indicates absence of value of any type, it might even mean absence of a placeholder (a variable or an object property) for a value
+    - The `typeof` keyword
+  - The "non-value" type: `null`
+    - `null` indicates absence of value of any type, but it's also an indication of a reserved placeholder for a possible value in the future
+  - Converting a primitive value into a different type of primitive value
+    - Implicit (automatic) conversion
+      - Combining values of different types
+        - `string` + `number` = `number` + `string` = `string`
+        - `string` + `boolean` = `boolean` + `string` = `string`
+        - Bonus
+          - `boolean` + `number` = `number` + `boolean` = `number`
+    - Explicit conversions
+      - `string` to `number`: `Number(string)`
+      - `number` to `string`: `number.toString()` and `String(number)`
+      - `boolean` to `string`: `boolean.toString()` and `String(boolean)`
+- Conditional Statements
+  - The `if` keyword
+    - The condition: It's always converted to a `boolean` value
+      - Shorthand conditional values: "truthy" and "falsy" values
+        - `boolean`
+        - `number`
+        - `string`
+        - `undefined` and `null`
+  - `else`
+  - `else if`
+  - Bonus
+    - `switch`
+- Loops
+  - The `for` loop
+  - Bonus
+    - `while`
+    - `do/while`
+- Non-primitive data types
+  - `function`
+    - Declaring a function: The `function` keyword
+    - Calling/invoking a function: The `()` operator
+    - Function _arguments_
+      - Calling/invoking a function with an argument
+      - Calling/invoking a function with multiple _arguments_
+      - Function _arguments_ are just local variables inside a function
+    - Difference between `var` and `let` inside a function
+    - Functions are also just variables
+      - Assigning a function variable
+      - Calling/invoking a function variable
+      - Calling/invoking a function from another function
+    - Function return value: The `return` keyword
+    - Bonus
+      - Self-invoking functions
+      - Closures
+  - `array`
+    - Single `array`
+      - Declaring and assigning an `array`
+      - Array `index` and elements
+        - Accessing an array element by index
+          - The traditional way: array[index]
+          - The modern way: array.at(index)
+        - Assigning or modifying an array element by index
+        - Array size: the `.length` property
+        - Find a value inside an array
+          - Does the array contain a value: `contains()`
+          - Find the index of a value inside of an array: `indexOf()`
+    - Multiple `arrays`
+      - Comparing multiple `arrays`: The `===` operator
+  - Plain `object`
+    - Single `object`
+      - Declaring and assigning an `object`
+      - Object _properties_
+        - Object _keys_ and _values_
+        - Accessing an object value by key
+          - The _dot_ way: `object.keyString`
+          - The _string_ way: `object['keyString']`
+    - Multiple `objects`
+      - Comparing multiple `objects`: The `===` operator
+  - Class: The `class` keyword
+    - A class is just a template for creating multiple objects of the same shape, it's an "object creator"
+    - Comparison: Old syntax VS modern syntax
+      - The `prototype` object
+    - Class members
+      - Class properties: No different to regular object properties
+      - Methods: They are just functions
+      - The `constructor` method
+      - The `this` keyword inside a class
+      - Bonus
+        - Class inheritance
+- Array methods and properties
+  - Array size: The `.length` property
+  - Iterating though an `array`
+    - Using the `for` loop
+    - Loop methods
+      - `forEach()`
+      - `map()`
+      - `filter()`
+    - Other methods
+      - `join()` - Join array values into a `string`
+      - `{string}.split()` - Split a string into an `array`
+- The DOM
+  - The `document` object
+    - `document.head` and `document.body`
+    - Accessing an element from the DOM
+      - Single element:
+        - By id: `document.getElementById(id)`
+        - By a query selector (CSS selector): `querySelector(cssSelector)`
+      - Multiple elements:
+        - By tag name: `getElementByTagName(tagName)`
+        - By the `className` attribute: `getElementsByClassName(className)`
+        - By a query selector (CSS selector): `querySelectorAll(cssSelector)`
+      - `querySelector` and `querySelectorAll`
+        - By tag name: `querySelector('div')`
+        - By id: `querySelector('#myElementId')`
+        - By the `className` attribute: `querySelector('.my-element-class')`
+        - Bonus
+          - Refer back to CSS Selectors
+          - By any other attribute: `querySelector('[attribute-name="attribute-value"]')`
+  - Elements inside the DOM
+    - Accessing and modifying an element's content
+      - `innerText`
+      - `innerHTML`
+    - Accessing and assigning attributes or properties of a DOM element
+      - Attributes VS properties - what is the difference?
+        - DOM element VS DOM object
+      - `id` property
+      - `className` property
+      - `getAttribute()` and `setAttribute()`
+      - Refer back to different tags and their specific attributes
+        - Accessing and interacting with an `input` element
+      - The `classList` property object
+        - `.add()`
+        - `.contains()`
+        - `.remove()`
+        - `.toggle()`
+        - `.replace()`
+    - Creating a new element: `document.createElement(tagName)`
+    - Adding an element to the DOM
+      - `appendChild()`
+      - `prepend()`
+  - Events
+    - Event type
+    - Event target
+    - Listen for an event: `element.addEventListener()`
+    - Event listeners
+      - Event listeners are just functions that react to an event
+      - Event listener's _arguments_: The `event` object:
+        - `type`
+        - `target`
+        - `currentTarget`
+        - Bonus
+          - Event bubbling
+    - Stop listening for an event: `element.removeEventListener()`
+- JavaScript Event Loop
+  - What is the order of code execution in JavaScript?
+  - Synchronous code
+  - Asynchronous code
+    - The Event Loop queue
+    - `setTimeout()` and `setInterval()`
+    - `clearTimeout()` and `clearInterval()`
+    - `Promises`
+      - `resolve` and `reject`
+      - `then` and `catch`
+    - Syntaxic alternative to `Promises`: `async` and `await`
+      - `try/catch` block
+- JavaScript Modules
+  - Overview: Refer back to the Global Object (`window`)
+  - The `type="module"` attribute of `<script></script>`
+  - JavaScript Modules are just encapsuled chunks of JavaScript code
+    - JavaScript modules don't polute the Global Object (`window`), avoiding naming conflicts
+    - Refer back to self-closing functions and closures
+    - Exporting and importing a JavaScript module: The `export` and `import` keywords
+    - Default export and default import: The `export default` keyword combination
+- JSON data format
+  - Overview: JSON object side by side a plain JavaScript object
+  - Converting a JSON into a JavaScript _object_ or _array_
+  - Converting a JavaScript _object_ or an _array_ into JSON
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## React
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `Create-React-App`
+  - Install `NodeJS`
+  - Install `yarn`
+  - Installing Node packages
+  - `Create React App`
+    - Install
+    - Overview of `Create-React-App` commands: `yarn start` and `Ctr+C`
+    - Demonstrate live updating
+- Introduction
+  - React app root
+  - Rendering native HTML elements in React
+  - React component: It can either be a `function` or a `class`
+    - Function Component
+      - Creating an empty function component
+        - The mandatory `return` statement
+        - The default `null`
+      - Render an HTML element into a basic React component
+      - Render multiple HTML elements into a basic React component
+        - With wrapping container
+        - With `React.Fragment` (The `<></>` element)
+      - Element attributes in HTML = Element props in React
+      - Event listeners - React VS JavaScript
+    - Component props
+      
