@@ -15,6 +15,7 @@ import conditionalsIfElseIf from './10-conditionalsIfElseIf';
 import loops from './11-loops';
 import forLoop from './12-forLoop';
 import functions from './13-function';
+import array from './14-array';
 
 export interface TopicObject {
   id: number;
@@ -38,6 +39,7 @@ const slides: TopicObject[] = [
   loops,
   forLoop,
   functions,
+  array,
 ];
 
 export default slides;

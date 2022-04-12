@@ -419,6 +419,29 @@ function greeting() {
     {
       headers: {
         h1: 'JavaScript Functions',
+        h2: 'Callback Functions',
+      },
+    },
+    {
+      headers: {
+        h1: 'JavaScript Functions',
+        h2: 'Callback Functions',
+        h3: 'Functions used as arguments',
+      },
+    },
+    {
+      headers: {
+        h1: 'JavaScript Functions',
+        h2: 'Callback Functions',
+        h3: 'Functions used as arguments',
+      },
+      innerSlides: [
+        // todo: add some slides here
+      ],
+    },
+    {
+      headers: {
+        h1: 'JavaScript Functions',
         h2: 'Functions that return a value',
       },
     },
